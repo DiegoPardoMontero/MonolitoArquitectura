@@ -42,7 +42,7 @@
                 android:layout_height="56dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:hint="Busca una categoría o palabra"
+                android:hint="Busca una categoría"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:fontFamily="@raw/regular"
