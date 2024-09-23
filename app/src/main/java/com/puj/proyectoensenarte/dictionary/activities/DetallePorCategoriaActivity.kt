@@ -68,7 +68,8 @@ class DetallePorCategoriaActivity : AppCompatActivity() {
                 if (document != null && document.exists()) {
                     val palabras = document.data?.map { (key, value) ->
                         Palabra(key, value.toString())
-                    } ?: emptyList()
+                    }?.sortedBy { it.texto } ?: emptyList()  // Ordenar alfabéticamente aquí
+
                     palabraAdapter.submitList(palabras)
                 } else {
                     // Manejar el caso en que no se encuentren palabras
