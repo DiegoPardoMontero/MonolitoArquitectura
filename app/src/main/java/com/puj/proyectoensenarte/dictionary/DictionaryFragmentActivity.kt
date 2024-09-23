@@ -1,38 +1,27 @@
 package com.puj.proyectoensenarte.dictionary
 
-import Error404
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
-import com.puj.proyectoensenarte.R
-import com.puj.proyectoensenarte.databinding.ActivityDictionaryFragmentBinding
+import com.puj.proyectoensenarte.databinding.ActivityDictionaryBinding
 
-class DictionaryFragmentActivity : Fragment() {
+class DictionaryActivity : AppCompatActivity() {
 
-    private var binding: ActivityDictionaryFragmentBinding? = null
+    private lateinit var binding: ActivityDictionaryBinding
     private lateinit var categoryAdapter: CategoryAdapter
     private val db = FirebaseFirestore.getInstance()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = ActivityDictionaryFragmentBinding.inflate(inflater, container, false)
-        return binding!!.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityDictionaryBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupSearchBar()
         setupCategoriesRecyclerView()
@@ -40,7 +29,7 @@ class DictionaryFragmentActivity : Fragment() {
     }
 
     private fun setupSearchBar() {
-        binding?.etSearch?.setOnEditorActionListener { _, actionId, _ ->
+        binding.etSearch.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 performSearch()
                 true
@@ -49,13 +38,13 @@ class DictionaryFragmentActivity : Fragment() {
             }
         }
 
-        binding?.ivSearch?.setOnClickListener {
+        binding.ivSearch.setOnClickListener {
             performSearch()
         }
     }
 
-    private fun navigateToDetallePorCategoria(categoria: String, imageUrl : String) {
-        val intent = Intent(requireContext(), DetallePorCategoriaActivity::class.java).apply {
+    private fun navigateToDetallePorCategoria(categoria: String, imageUrl: String) {
+        val intent = Intent(this, DetallePorCategoriaActivity::class.java).apply {
             putExtra("CATEGORIA", categoria)
             putExtra("CATEGORIA_IMAGE_URL", imageUrl)
         }
@@ -66,9 +55,9 @@ class DictionaryFragmentActivity : Fragment() {
         categoryAdapter = CategoryAdapter { category ->
             navigateToDetallePorCategoria(category.name, category.imageUrl)
         }
-        binding?.rvCategories?.apply {
+        binding.rvCategories.apply {
             adapter = categoryAdapter
-            layoutManager = GridLayoutManager(context, 3)
+            layoutManager = GridLayoutManager(this@DictionaryActivity, 3)
         }
     }
 
@@ -84,10 +73,10 @@ class DictionaryFragmentActivity : Fragment() {
     }
 
     private fun performSearch() {
-        var searchQuery = binding?.etSearch?.text.toString().trim()
+        var searchQuery = binding.etSearch.text.toString().trim()
         searchQuery = searchQuery.lowercase()
         if (searchQuery.isEmpty()) {
-            Toast.makeText(context, "Por favor, ingrese un término de búsqueda", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Por favor, ingrese un término de búsqueda", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -102,18 +91,17 @@ class DictionaryFragmentActivity : Fragment() {
                 }
             }
             .addOnFailureListener { e ->
-                Log.e("DictionaryFragment", "Error buscando categoría: ", e)
+                Log.e("DictionaryActivity", "Error buscando categoría: ", e)
                 navigateToError404()
             }
     }
 
     private fun navigateToResultadoBusquedaCategoria(categoria: String) {
         var categoria = capitalizeFirstLetter(categoria)
-        val fragment = ResultadoBusquedaCategoriaFragment.newInstance(categoria)
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.container, fragment)
-            .addToBackStack(null)
-            .commit()
+        val intent = Intent(this, ResultadoBusquedaCategoriaActivity::class.java).apply {
+            putExtra("CATEGORIA", categoria)
+        }
+        startActivity(intent)
     }
 
     private fun noResultsFound(query: String): Boolean {
@@ -122,15 +110,13 @@ class DictionaryFragmentActivity : Fragment() {
     }
 
     private fun navigateToError404() {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.container, Error404())
-            .addToBackStack(null)
-            .commit()
+        val intent = Intent(this, Error404Activity::class.java)
+        startActivity(intent)
     }
 
     private fun hideKeyboard() {
-        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(binding?.etSearch?.windowToken, 0)
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
     }
 
     private fun capitalizeFirstLetter(input: String): String {
@@ -140,10 +126,4 @@ class DictionaryFragmentActivity : Fragment() {
             input
         }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
-    }
-
 }

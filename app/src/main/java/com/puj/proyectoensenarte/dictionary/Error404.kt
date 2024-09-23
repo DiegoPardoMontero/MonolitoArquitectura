@@ -1,28 +1,20 @@
+package com.puj.proyectoensenarte.dictionary
+
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import androidx.fragment.app.Fragment
-import com.puj.proyectoensenarte.databinding.ActivityError404FragmentBinding
-class Error404 : Fragment() {
+import androidx.appcompat.app.AppCompatActivity
+import com.puj.proyectoensenarte.databinding.ActivityError404Binding
 
-    private var _binding: ActivityError404FragmentBinding? = null
-    private val binding get() = _binding!!
+class Error404Activity : AppCompatActivity() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = ActivityError404FragmentBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    private lateinit var binding: ActivityError404Binding
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityError404Binding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupSearchBar()
     }
@@ -43,19 +35,17 @@ class Error404 : Fragment() {
     }
 
     private fun performSearch() {
-        //Lógica para la búsqueda
+        // Lógica para la búsqueda
         val searchQuery = binding.etSearch.text.toString()
         binding.etSearch.setText("")
         hideKeyboard()
+
+        // Aquí puedes agregar la lógica para manejar la búsqueda
+        // Por ejemplo, puedes iniciar una nueva actividad con los resultados de la búsqueda
     }
 
     private fun hideKeyboard() {
-        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

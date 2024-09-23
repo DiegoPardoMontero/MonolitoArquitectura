@@ -3,31 +3,26 @@ package com.puj.proyectoensenarte.dictionary
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.storage.FirebaseStorage
 import com.puj.proyectoensenarte.databinding.ActivityResultadoBusquedaCategoriaBinding
 
-class ResultadoBusquedaCategoriaFragment : Fragment() {
+class ResultadoBusquedaCategoriaActivity : AppCompatActivity() {
 
-    private var _binding: ActivityResultadoBusquedaCategoriaBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityResultadoBusquedaCategoriaBinding
     private lateinit var categoryAdapter: CategoryAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = ActivityResultadoBusquedaCategoriaBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityResultadoBusquedaCategoriaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupSearchBar()
         setupRecyclerView()
-        performSearch(arguments?.getString("SEARCH_QUERY") ?: "")
+
+        val searchQuery = intent.getStringExtra("SEARCHQUERY") ?: ""
+        performSearch(searchQuery)
     }
 
     private fun setupSearchBar() {
@@ -41,11 +36,11 @@ class ResultadoBusquedaCategoriaFragment : Fragment() {
             navigateToDetallePorCategoria(category.name, category.imageUrl)
         }
         binding.rvSearchResults.adapter = categoryAdapter
-        binding.rvSearchResults.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvSearchResults.layoutManager = LinearLayoutManager(this)
     }
 
     private fun performSearch(query: String) {
-        var capitalizedQuery = capitalizeFirstLetter(query)
+        val capitalizedQuery = capitalizeFirstLetter(query)
         val storage = FirebaseStorage.getInstance()
         val imageRef = storage.reference.child("imagenesCategorias/$capitalizedQuery.png")
 
@@ -69,25 +64,18 @@ class ResultadoBusquedaCategoriaFragment : Fragment() {
         }
     }
 
-    private fun navigateToDetallePorCategoria(categoria: String, imageUrl : String) {
-        val intent = Intent(requireContext(), DetallePorCategoriaActivity::class.java).apply {
+    private fun navigateToDetallePorCategoria(categoria: String, imageUrl: String) {
+        val intent = Intent(this, DetallePorCategoriaActivity::class.java).apply {
             putExtra("CATEGORIA", categoria)
             putExtra("CATEGORIA_IMAGE_URL", imageUrl)
         }
         startActivity(intent)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     companion object {
-        fun newInstance(searchQuery: String): ResultadoBusquedaCategoriaFragment {
-            return ResultadoBusquedaCategoriaFragment().apply {
-                arguments = Bundle().apply {
-                    putString("SEARCH_QUERY", searchQuery)
-                }
+        fun newIntent(context: AppCompatActivity, searchQuery: String): Intent {
+            return Intent(context, ResultadoBusquedaCategoriaActivity::class.java).apply {
+                putExtra("SEARCHQUERY", searchQuery)
             }
         }
     }
