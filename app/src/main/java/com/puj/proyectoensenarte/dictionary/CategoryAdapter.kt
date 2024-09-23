@@ -12,8 +12,6 @@ import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import com.puj.proyectoensenarte.R
 
-data class Category(val imageUrl: String, val name: String)
-
 class CategoryAdapter(
     private val onItemClicked: (Category) -> Unit
 ) : ListAdapter<Category, CategoryAdapter.CategoryViewHolder>(CategoryDiffCallback()) {
@@ -82,3 +80,5 @@ class CategoryAdapter(
         }
     }
 }
+
+data class Category(val imageUrl: String, val name: String)

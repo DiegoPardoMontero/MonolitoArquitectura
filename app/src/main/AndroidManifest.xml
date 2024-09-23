@@ -25,15 +25,9 @@
             android:exported="true"/>
         <activity android:name=".dictionary.ResultadoBusquedaCategoriaActivity"
             android:exported="true"/>
-        <activity android:name=".dictionary.DetallePorLetraActivity"
-            android:exported="true"/>
         <activity android:name=".dictionary.DetallePorCategoriaActivity"
             android:exported="true"/>
         <activity android:name=".dictionary.DetallePalabraActivity"
-            android:exported="true"/>
-
-        <activity
-            android:name=".BottomNavigationActivity"
             android:exported="true"/>
 
     </application>
