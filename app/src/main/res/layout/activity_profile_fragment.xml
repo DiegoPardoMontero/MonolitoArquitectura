@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:background="@color/coralSea"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/perfil"
+        android:layout_width="54dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:fontFamily="@raw/regularbold"
+        android:gravity="center_horizontal|top"
+        android:lineSpacingExtra="20sp"
+        android:text="@string/perfil"
+        android:textAppearance="@style/perfil"
+        android:translationY="-9.83sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageProfile"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:padding="4dp"
+        android:layout_marginTop="100dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/paco"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="4dp"
+        app:shapeAppearanceOverlay="@style/CircularImageView"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/nameProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@raw/regularbold"
+        android:gravity="center_horizontal|top"
+        android:lineSpacingExtra="30sp"
+        android:text=""
+        android:textAppearance="@style/nombrePerfilCard"
+        android:translationY="-14.89sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageProfile" />
+
+
+    <TextView
+        android:id="@+id/usernameProfile"
+        android:layout_width="125dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@raw/regular"
+        android:gravity="center_horizontal|top"
+        android:lineSpacingExtra="32sp"
+        android:text=""
+        android:textAppearance="@style/correoPerfilCard"
+        android:translationY="-16.15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameProfile" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="1000dp"
+        android:background="@color/paco"
+        android:backgroundTint="@color/paco"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCardView.Cut"
+        android:layout_marginTop="10dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameProfile">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

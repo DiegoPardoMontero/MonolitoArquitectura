@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+         android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+    <ImageView
+        android:id="@+id/imgCategoryIcon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <TextView
+        android:id="@+id/tvCategoryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@raw/regular"
+        android:gravity="center"
+        android:ellipsize="none"
+        android:singleLine="false"
+        android:maxLines="2"
+        android:text="Categoría"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+</LinearLayout>
+

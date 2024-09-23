@@ -1,0 +1,130 @@
+fun signIn(email: String, password: String) {
+        if (email.isBlank() || password.isBlank()) {
+            Toast.makeText(this, "Email and Password must not be empty", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success
+                    Log.d(TAG, "signInWithEmail:success")
+                    val user = auth.currentUser
+                    Toast.makeText(this, "Welcome back!", Toast.LENGTH_SHORT).show()
+
+                    // Redirigir a otra actividad o actualizar la UI
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+                    Toast.makeText(this, "Authentication failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+    fun createAccount(name : String, email: String, password: String) {
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, get the user's information
+                    val user = auth.currentUser
+                    user?.let {
+                        val uid = user.uid
+                        val email = user.email
+
+                        // Create a new user with the UID
+                        val userMap = hashMapOf(
+                            "email" to email,
+                            "uid" to uid,
+                            "name" to name
+                        )
+
+                        // Store user data in Firestore
+                        db.collection("users").document(uid)
+                            .set(userMap)
+                            .addOnSuccessListener {
+                                Log.d(TAG, "User data stored successfully")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.w(TAG, "Error storing user data", e)
+                            }
+                    }
+                } else {
+                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+    fun getUserData() {
+        val user = auth.currentUser
+        user?.let {
+            val uid = user.uid
+
+            // Retrieve user data from Firestore
+            db.collection("users").document(uid)
+                .get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        Log.d(TAG, "User data: ${document.data}")
+                        // Puedes acceder a los datos, por ejemplo:
+                        val email = document.getString("email")
+                        Toast.makeText(baseContext, "User email: $email", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Log.d(TAG, "No such document")
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d(TAG, "get failed with ", exception)
+                }
+        }
+    }
+
+    private fun sendPasswordReset(email: String) {
+            auth.sendPasswordResetEmail(email)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Password reset email sent to $email", Toast.LENGTH_SHORT).show()
+                    } else {
+                        val exception = task.exception
+                        when (exception) {
+                            is FirebaseAuthInvalidUserException -> {
+                                Toast.makeText(this, "No account found with this email.", Toast.LENGTH_SHORT).show()
+                            }
+                            is FirebaseNetworkException -> {
+                                Toast.makeText(this, "Network error. Please try again later.", Toast.LENGTH_SHORT).show()
+                            }
+                            else -> {
+                                Toast.makeText(this, "Error: ${exception?.message}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                }
+        }
+
+fun getImageNamesAndUrls() {
+        // Referencia a la carpeta en Firebase Storage (en este caso 'imagenesCateg')
+        val listRef: StorageReference = storage.getReference().child("imagenesCateg")
+
+        // Listar todos los archivos en esa referencia
+        listRef.listAll().addOnSuccessListener { listResult ->
+            // Iterar sobre cada item (archivo)
+            for (item in listResult.getItems()) {
+                // Obtener el nombre del archivo
+                val fileName: String = item.getName()
+
+                // Obtener la URL de descarga del archivo
+                item.getDownloadUrl().addOnSuccessListener { uri ->
+                    val downloadUrl: String = uri.toString()
+
+                    // Aquí puedes hacer lo que necesites con el nombre y la URL
+                    println("Nombre: $fileName")
+                    println("URL: $downloadUrl")
+                }.addOnFailureListener { e ->
+                    // Manejo de errores si la URL de descarga no se puede obtener
+                    System.out.println("Error obteniendo URL: " + e.toString())
+                }
+            }
+        }.addOnFailureListener { e ->
+            // Manejo de errores si la lista de archivos no se puede obtener
+            System.out.println("Error obteniendo lista de archivos: " + e.toString())
+        }
+    }

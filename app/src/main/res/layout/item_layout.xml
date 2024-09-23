@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <!-- Icono de cada item -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:contentDescription="@string/app_name"/>
+
+    <!-- Contenedor de título y subtítulo -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Título del item -->
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@raw/regularbold"
+            android:textColor="@color/paperback"
+            android:text="Item Name"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp"/>
+
+        <!-- Subtítulo del item -->
+        <TextView
+            android:id="@+id/subtitleTextView"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@raw/regular"
+            android:text="Subtitulo del item"
+            android:textSize="17sp"
+            android:textColor="#808080"/>
+    </LinearLayout>
+
+    <!-- Icono de flecha -->
+    <ImageView
+        android:id="@+id/goIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:paddingLeft="5dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_arrow_right"
+        android:contentDescription="@string/app_name" />
+
+</LinearLayout>

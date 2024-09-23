@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ProyectoEnsenarte"
+        tools:targetApi="31">
+        <!--- Main Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
+        </activity>
+        <!--- Authentication Activities -->
+        <activity android:name=".CrearCuentaActivity"/>
+        <activity android:name=".IniciarSesionActivity"/>
+        <activity android:name=".authentication.ForgotPasswordActivity"/>
+        <!--- Dictionary Activities -->
+        <activity android:name=".dictionary.DetallePorLetraActivity"
+            android:exported="true"/>
+        <activity android:name=".dictionary.DetallePorCategoriaActivity"
+            android:exported="true"/>
+        <activity android:name=".dictionary.DetallePalabraActivity"
+            android:exported="true"/>
+        <!--- Information Activities -->
+
+        <!--- Learning Activities -->
+
+        <activity
+            android:name=".learning.LearningFragmentActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".learning.ScrollableMapActivity"
+            android:exported="true">
+        </activity>
+
+        <!--- Onboarding Activities -->
+        <activity
+            android:name=".onboarding.SliderActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".onboarding.OnboardingOneActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".onboarding.OnboardingTwoActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".onboarding.OnboardingThreeActivity"
+            android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name=".BottomNavigationActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+
+        <!--- Profile Activities-->
+
+        <activity
+            android:name=".profile.SettingsProfileActivity"
+            android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name=".profile.StatisticsProfileActivity"
+            android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name=".profile.ZoomInsigniaActivity"
+            android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name=".profile.RewardProfileActivity"
+            android:exported="true">
+
+        </activity>
+
+
+
+
+    </application>
+
+</manifest>

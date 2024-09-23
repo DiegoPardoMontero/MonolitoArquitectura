@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeableImageViewIniciarSesion"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/img_iniciarsesion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/CircularImageView" />
+
+    <TextView
+        android:id="@+id/tituloIniciarSesion"
+        android:layout_width="283dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@raw/regularbold"
+        android:gravity="center_horizontal|top"
+        android:lineSpacingExtra="-14sp"
+        android:text="@string/inicia"
+        android:textAppearance="@style/tituloAutenticacion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shapeableImageViewIniciarSesion" />
+
+    <TextView
+        android:id="@+id/descripIniciarSesion"
+        android:layout_width="282dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@raw/regular"
+        android:gravity="center_horizontal|top"
+        android:lineSpacingExtra="2sp"
+        android:text="@string/iniciaSesionDescrip"
+        android:textAppearance="@style/descripcionAutenticacion"
+        android:translationY="-1.15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloIniciarSesion" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textFieldEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/email"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descripIniciarSesion"
+        app:startIconDrawable="@drawable/ic_mail"> <!-- Icono al lado izquierdo del hint -->
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@raw/regular"
+            android:hint=""
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textFieldPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/contrase_a"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFieldEmail"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:endIconMode="password_toggle"> <!-- Icono de ojo para mostrar/ocultar contraseña -->
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@raw/regular"
+            android:hint=""
+            android:inputType="textPassword" /> <!-- Tipo de entrada para contraseña -->
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/olvidasteContraText"
+        android:layout_width="345dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="40dp"
+        android:gravity="right|top"
+        android:lineSpacingExtra="2sp"
+        android:text="@string/olvidaste_t"
+        android:textAppearance="@style/olvidaste_t"
+        android:translationY="-1.15sp"
+        android:fontFamily="@raw/regularbold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFieldPassword"
+        tools:ignore="RtlHardcoded" />
+
+    <Button
+        android:id="@+id/botonIniciarSesion"
+        android:layout_width="320dp"
+        android:layout_height="59dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/portakal"
+        android:fontFamily="@raw/subtitulo"
+        android:text="@string/iniciar_sesi_n"
+        android:textAppearance="@style/boton_onboarding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/olvidasteContraText" />
+
+
+    <LinearLayout
+        android:id="@+id/textsContainerCrearCuenta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="43dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonIniciarSesion">
+
+        <TextView
+            android:id="@+id/no_tienes_cuenta_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="0.5"
+            android:fontFamily="@raw/regular"
+            android:gravity="end"
+            android:text="¿No tienes una cuenta?"
+            android:textAppearance="@style/ya_tienes_cuenta"
+            android:translationY="-1.15sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textoCrearCuenta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="0.5"
+            android:fontFamily="@raw/regularbold"
+            android:gravity="start"
+
+            android:text="Crea una cuenta"
+            android:textAppearance="@style/inicia"
+            android:translationY="-1.15sp"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

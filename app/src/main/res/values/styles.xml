@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TituloEstilo">
+        <item name="android:textSize">24sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="aprende_len_onboarding">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="boton_onboarding">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="CircularImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="tituloAutenticacion">
+        <item name="android:textSize">24sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:textColor">#358CB2</item>
+    </style>
+
+    <style name="descripcionAutenticacion">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:textColor">#CC49454F</item>
+    </style>
+
+    <style name="ya_tienes_cuenta">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:textColor">#49454F</item>
+    </style>
+
+    <style name="inicia">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:textColor">@color/coralSea</item>
+    </style>
+
+    <style name="CustomTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/sage</item> <!-- Color del borde cuando está enfocado -->
+        <item name="hintTextColor">@color/sage</item> <!-- Color del hint cuando está enfocado -->
+        <item name="helperTextTextColor">@color/coralSea</item> <!-- Color del helper text -->
+    </style>
+
+    <style name="olvidaste_t">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:textColor">#698A4B</item>
+    </style>
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/portakal</item>
+    </style>
+
+    <style name="titulosPerfilList">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">#99000000</item>
+    </style>
+
+    <style name="perfil">
+        <item name="android:textSize">24sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">#FFFDF8</item>
+    </style>
+
+    <style name="nombrePerfilCard">
+        <item name="android:textSize">20sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">#FFFDF8</item>
+    </style>
+
+    <style name="correoPerfilCard">
+        <item name="android:textSize">17sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">#CCFFFDF8</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MyApp.CardTopCorners" parent="">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSizeTopLeft">25dp</item>
+        <item name="cornerSizeTopRight">25dp</item>
+    </style>
+
+    <style name="MyCardView" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut</item>
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">15dp</item>
+        <item name="cornerSizeTopLeft">15dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut2" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">1000dp</item>
+        <item name="cornerSizeBottomLeft">100dp</item>
+    </style>
+
+    <style name="RoundedCardCorners" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">24dp</item>
+        <item name="cornerSizeTopRight">24dp</item>
+        <item name="cornerSizeBottomRight">0dp</item> <!-- Esquinas inferiores rectas -->
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="mi_perfil">
+        <item name="android:textSize">24sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:fontFamily">@raw/regularbold</item>
+        <item name="android:textColor">@color/paciencie</item>
+    </style>
+
+    <style name="actualiza_t">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">#99000000</item>
+        <item name="android:fontFamily">@raw/regular</item>
+    </style>
+
+    <!-- styles.xml -->
+
+    <!-- Define un estilo para el título del Toolbar -->
+    <style name="ToolbarTitleTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:fontFamily">@raw/regularbold</item> <!-- Reemplaza con tu fuente personalizada -->
+        <item name="android:textSize">24sp</item> <!-- Ajusta el tamaño del texto -->
+        <item name="android:textColor">@color/paco</item> <!-- Color del texto -->
+    </style>
+
+
+</resources>

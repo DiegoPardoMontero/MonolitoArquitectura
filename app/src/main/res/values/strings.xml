@@ -1,0 +1,158 @@
+<resources>
+    <string name="app_name">Proyecto Enseñarte</string>
+    <string name="onboarding2_image_content">Onboarding image</string>
+    <string name="onboarding3_image_content">onboarding2_image_content</string>
+    <string name="tituloOnboarding2">Una nueva forma de aprender LSC</string>
+    <string name="tituloOnboarding3">Reconocimiento de señas dinámicas</string>
+    <string name="tituloOnboarding4">Gamificación y aprendizaje de LSC</string>
+
+    <string name="texto_onboarding2">
+        Aprende Lengua de Señas Colombiana a través de una historia cautivadora, recompensas y mucho mucho más
+    </string>
+    <string name="texto_onboarding3">
+        Práctica las señas que has aprendido a través del reconocimiento de video impulsado con IA
+    </string>
+    <string name="texto_onboarding4">
+        Recorre las lecciones a través de actividades de la LSC, mientras  ganas insignias y mantienes tu racha
+    </string>
+
+
+    <string name="fondo_de_onboarding_2">Fondo de onboarding 2</string>
+    <string name="crear_cuenta">Crear Cuenta</string>
+    <string name="iniciar_sesi_n">Iniciar Sesión</string>
+    <string name="onboarding_image_content">d</string>
+    <string name="crea_una_cu">Crear una cuenta</string>
+    <string name="aprende_lsc">Aprende LSC y ayuda a desarmar las barreras de comunicación en nuestro país</string>
+    <string name="ya_tienes_cuenta">¿Ya tienes una cuenta?</string>
+    <string name="inicia">Inicia Sesión</string>
+    <string name="nombre_completo">Nombre Completo</string>
+    <string name="email">Email</string>
+    <string name="usuario">Usuario</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="IniciarSesiónTitle">Iniciar Sesión</string>
+    <string name="iniciaSesionDescrip">Por favor ingresa tus datos para seguir aprendiendo LSC</string>
+    <string name="olvidaste_t">¿Olvidaste tu contraseña?</string>
+    <string name="diccionario">Diccionario</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">TODO</string>
+    <string name="messi_hotmail_com">messi@hotmail.com</string>
+    <string name="perfil">Perfil</string>
+    <string name="paco_andres_messi">Paco Andres Messi</string>
+    <string name="olvidaste_contrasena_descrip">Por favor ingresa tu correo electrónico, te enviaremos un link de reestablecimiento de tu contraseña</string>
+    <string name="olvidaste_tu_contrasena">¿Olvidaste tu contraseña?</string>
+    <string name="enviar_correo_de_recuperacion">Enviar correo de recuperación</string>
+    <string name="volver_a_iniciar_sesion">Volver a iniciar sesión</string>
+    <string name="back_button_desc">Botón de retractarse</string>
+    <string name="configuraciones">Configuraciones</string>
+    <string name="mi_perfil">Mi Perfil</string>
+    <string name="actualiza_t">Actualiza tus datos personales</string>
+    <string name="avatar_image">Avatar\n</string>
+    <string name="selecciona_tu_avatar">Selecciona tu Avatar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="done">Listo</string>
+    <string name="_19">19</string>
+    <string name="insignias_obtenidas">Insignias obtenidas</string>
+    <string name="estad_sticas">Estadísticas</string>
+    <string name="racha_fuego">Racha</string>
+    <string name="puntos_xp">Puntos de experiencia</string>
+    <string name="_1200">1200</string>
+
+    <!--information-->
+
+    <!--comunidad-->
+    <string name="comunidad_titulo1">Comunidad Sorda</string>
+    <string name="comunidad_subtitulo1">¿Quiénes son?</string>
+    <string name="comunidad_parrafo1">Son una comunidad que se autodetermina como una minoría lingüística con una cultura y una lengua propia, que es la Lengua de Señas. Esta lengua cumple con todas las leyes lingüísticas y se aprende dentro de una comunidad de usuarios, facilitando la resolución de todas las necesidades comunicativas y no comunicativas propias del ser humano, tanto a nivel social como cultural.\n\n
+La comunidad sorda, destaca que no se considera discapacitados o incompetentes, ni se autodefinen de esa manera. Aspiran a que los oyentes tampoco los definan como personas con discapacidad, sino como individuos diferentes. Muchos incluso, se consideran biculturales, mostrando una clara conciencia de su naturaleza lingüística, sin que ello represente grandes barreras de exclusión, como las experimentadas por otros grupos.</string>
+    <string name="comunidad_subtitulo2">Algunos desafíos</string>
+    <string name="comunidad_parrafo2">A pesar de la implementación de políticas y programas de pedagogía para formalizar y generalizar la LSC en el país, hasta 2020 solo había 700 intérpretes, frente a una comunidad de 555.000 personas sordas que usan este lenguaje. Esta última cifra equivale a tan solo un 1% de la población total en Colombia (Universidad El Bosque, 2023) revelando así la falta de conocimiento y la escasa adopción de la LSC por parte de la población sin discapacidades auditivas.\n\n
+Teniendo en cuenta el contexto anterior, se presenta una dificultad entre la comunicación de personas sordas y personas oyentes, en contextos sociales, educativos y profesionales.\n\n</string>
+    <string name="comunidad_titulo2">Enseñanza de la LSC</string>
+    <string name="comunidad_subtitulo3">¿Desafíos?</string>
+    <string name="comunidad_parrafo3">El progreso en el desarrollo de herramientas tecnológicas especializadas para el aprendizaje y enseñanza de la lengua de señas se ha convertido en una tendencia global, con diversos países a la vanguardia de esta iniciativa. Naciones como Estados Unidos, Canadá, Reino Unido, Japón y Australia han liderado esfuerzos significativos en la implementación de tecnologías avanzadas, especialmente la inteligencia artificial (IA), para mejorar la accesibilidad y la calidad del aprendizaje de la lengua de señas. La IA se ha empleado con éxito en la creación de sistemas interactivos que reconocen y analizan los gestos específicos de la lengua de señas, permitiendo una retroalimentación inmediata y personalizada para los usuarios. Estos avances no solo han mejorado la eficacia del aprendizaje, sino que también han contribuido a cerrar la brecha de comunicación entre personas sordas y oyentes.\n\n
+No obstante, en Colombia existen escasas herramientas tecnológicas certificadas para la enseñanza y aprendizaje del lenguaje de señas. Sin embargo, gracias a la disponibilidad de Internet y sus búsquedas rápidas, es posible acceder fácilmente al recurso más valioso para el aprendizaje de la LSC: el Diccionario de la LSC (INSOR, 2006). Este diccionario se erige como el primer paso hacia la estandarización de la lengua, al recoger la identidad y el sentido de pertenencia de la comunidad sorda colombiana. Además, se convierte en el primer compendio léxico que facilita los procesos comunicativos y educativos en la comunidad, siendo una herramienta de trabajo tanto para pedagogos como para personas no señantes y sordas no señantes que deseen aprender esta lengua.\n\n
+Pese a la disponibilidad de recursos, como repositorios virtuales del diccionario básico con fotos, videos y texto, y la opción de aprendizaje tradicional con intérpretes (aunque estos son escasos en el país) o tutoriales en YouTube (INSOR EDUCATIVO, 2023), en Colombia se evidencia la carencia de herramientas que integren tecnologías emergentes para abordar eficazmente el desafío de enseñar la LSC. No solamente se trata de ofrecer la oportunidad de enseñar y aprender las señas, sino de proporcionar a la persona la posibilidad de practicar los gestos y validarlos frente a una cámara, obteniendo una retroalimentación continua. Este enfoque no solo aumentaría la efectividad del aprendizaje, sino que también serviría como fuente de motivación continua para el estudiante en su proceso de dominio del lenguaje de señas.</string>
+
+    <!--links-->
+    <string name="links_titulo1">Links importantes</string>
+
+    <string name="links_INSOR_titulo">Instituto Nacional de Sordos</string>
+    <string name="links_INSOR_subtitulo">INSOR</string>
+    <string name="links_INSOR_descripcion">La página del INSOR (Instituto Nacional para Sordos) ofrece información y recursos educativos para la inclusión y el desarrollo de la comunidad sorda en Colombia.</string>
+
+    <string name="links_FENASCOL_titulo">Federación Nacional de Sordos</string>
+    <string name="links_FENASCOL_subtitulo">FENASCOL</string>
+    <string name="links_FENASCOL_descripcion">La página de FENASCOL (Federación Nacional de Sordos de Colombia) promueve los derechos, la integración y el bienestar de las personas sordas en Colombia a través de programas y servicios inclusivos.</string>
+
+    <string name="links_INSOR_educativo_titulo">Instituto Nacional de Sordos Educativo</string>
+    <string name="links_INSOR_educativo_subtitulo">INSOR Educativo</string>
+    <string name="links_INSOR_educativo_descripcion">INSOR Educativo es una plataforma digital que proporciona recursos, herramientas y contenidos educativos adaptados para la enseñanza y aprendizaje inclusivo de personas sordas en Colombia.</string>
+
+    <string name="links_diccionario_lsc_titulo">Diccionario Online LSC</string>
+    <string name="links_diccionario_lsc_subtitulo">INSOR Educativo</string>
+    <string name="links_diccionario_lsc_descripcion">El diccionario del INSOR Educativo es una herramienta en línea que proporciona definiciones y videos de señas para palabras en la Lengua de Señas Colombiana (LSC), apoyando el aprendizaje y la inclusión.</string>
+
+    <string name="links_hetah_titulo">Hetah.net</string>
+    <string name="links_hetah_subtitulo">Traductor de señas online</string>
+    <string name="links_hetah_descripcion">Hetah.net ofrece un traductor de señas en línea que facilita la comunicación entre personas oyentes y sordas, utilizando inteligencia artificial para interpretar y convertir texto a lenguaje de señas.</string>
+
+    <string name="links_edutin_titulo">Edutin Academy</string>
+    <string name="links_edutin_subtitulo">Cursos online de LSC</string>
+    <string name="links_edutin_descripcion">Edutin Academy ofrece cursos en línea sobre la Lengua de Señas Colombiana (LSC), brindando acceso a recursos educativos para aprender y mejorar la comunicación en LSC de manera flexible y accesible.</string>
+
+    <string name="links_maguare_titulo">Maguaré</string>
+    <string name="links_maguare_subtitulo">Aprendizaje de LSC para niños</string>
+    <string name="links_maguare_descripcion">Maguaré ofrece recursos interactivos para el aprendizaje de la Lengua de Señas Colombiana (LSC), con juegos y actividades diseñadas para niños, promoviendo la inclusión desde la primera infancia.</string>
+
+    <string name="links_funsinapsis_titulo">Fundación Sinapsis</string>
+    <string name="links_funsinapsis_subtitulo">FunSinapsis</string>
+    <string name="links_funsinapsis_descripcion">La Fundación FunSinapsis se dedica a la atención integral y el apoyo a personas con discapacidades y necesidades educativas especiales, ofreciendo terapias, programas educativos y asesoría para mejorar su calidad de vida.</string>
+
+
+    <!--grammar-->
+    <string name="grammar_titulo1">Características Gramaticales</string>
+    <string name="grammar_titulo2">Uso del espacio y dirección</string>
+    <string name="grammar_subtitulo1">Espacio</string>
+    <string name="grammar_parrafo1">En la LSC, el espacio frente al cuerpo del firmante se utiliza de manera significativa para representar conceptos y ubicar objetos o personas en relación con otros. Por ejemplo, se puede usar el espacio para indicar la ubicación de diferentes elementos en una sala o la disposición de varios participantes en una conversación.</string>
+    <string name="grammar_subtitulo2">Dirección</string>
+    <string name="grammar_parrafo2">La dirección del movimiento de las manos y el cuerpo es crucial para la gramática de la LSC. Cambiar la dirección de la mano puede cambiar completamente el significado de un signo. Por ejemplo, mover la mano hacia arriba puede indicar un objeto que está en una posición alta, mientras que moverla hacia abajo puede indicar algo que está en una posición baja.</string>
+    <string name="grammar_titulo3">Configuraciones de la mano</string>
+    <string name="grammar_subtitulo3">Configuraciones manuales</string>
+    <string name="grammar_parrafo3">Las configuraciones de mano en la LSC son específicas posiciones de los dedos y las manos que son fundamentales para expresar diferentes conceptos y palabras.\n\nCada configuración de mano tiene un significado único y puede cambiar el significado de un signo aunque el movimiento y la ubicación sean los mismos. Por ejemplo, la forma en que se coloca el pulgar y los dedos puede representar letras del alfabeto, números, o características físicas como el tamaño o la forma de un objeto.</string>
+    <string name="grammar_titulo4">Movimiento y expresión facial</string>
+    <string name="grammar_parrafo4">El movimiento de las manos y la expresión facial son componentes esenciales de la gramática de la LSC. Las expresiones faciales y corporales pueden modificar el significado de un signo o una frase, añadiendo matices, emociones y claridad a la comunicación. Por ejemplo, una ceja levantada puede indicar sorpresa o interrogación, mientras que una expresión facial más seria puede indicar afirmación o negación.</string>
+    <string name="grammar_titulo5">Orden de las palabras</string>
+    <string name="grammar_parrafo5">Aunque la LSC no sigue estrictamente la misma estructura de sujeto-verbo-objeto (SVO) que muchas lenguas habladas, tiene patrones gramaticales específicos que varían según el contexto y la intención comunicativa. La flexibilidad en el orden de las palabras permite adaptarse a diferentes estilos de expresión y énfasis. Por ejemplo, se puede comenzar una frase con información nueva para enfatizarla, mientras que se puede enfatizar otra información al final de una frase.</string>
+    <string name="grammar_titulo6">Morfología y formación de palabras</string>
+    <string name="grammar_parrafo6">La LSC utiliza procesos morfológicos para la formación de palabras, como la derivación y la inflexión manual. Estos procesos son clave para la creación de nuevos términos y la adaptación de la lengua a nuevas realidades y contextos. Por ejemplo, se pueden añadir prefijos o sufijos a un signo base para cambiar su significado o especificidad.</string>
+    <string name="grammar_titulo7">Negación e interrogación</string>
+    <string name="grammar_parrafo7">La gramática de la LSC incluye mecanismos para expresar negación e interrogación. Para expresar negación, se puede hacer un movimiento específico con la mano o la cabeza. Para interrogar, se utiliza una combinación de movimientos de las manos, expresiones faciales y cambios en la dirección del movimiento para indicar preguntas y respuestas negativas.</string>
+
+    <!--history-->
+
+    <string name="history_titulo1">Historia</string>
+    <string name="history_titulo2">Origenes de la Lengua de Señas</string>
+    <string name="history_subtitulo1">Educación Oralista y Manual</string>
+    <string name="history_parrafo1">El surgimiento del estudio de la persona sorda encuentra sus raíces en el siglo XVIII, en naciones europeas como Francia, Alemania e Italia. Estas corrientes de pensamiento se trasladan posteriormente a América Latina, consolidándose en Colombia alrededor de la década de los noventa.\n\n
+Desde una perspectiva tanto biológica como social, se han suscitado transformaciones significativas en los conceptos asociados a la sordera. En primera instancia, desde el enfoque biológico, los sordos eran conceptualizados como individuos enfermos que requerían terapia, situación que, implicaba la privación de sus derechos fundamentales. No fue sino hasta el siglo XVII cuando la sordera empezó a ser abordada científicamente, y fue en Francia donde se comenzaron a reconocer dimensiones colectivas para la educación de las personas sordas, a través de la instauración de escuelas públicas dedicadas a este propósito, marcando el inicio de su consideración como un grupo social.</string>
+    <string name="history_subtitulo2">L’Epée y sus aportes</string>
+    <string name="history_parrafo2">En este contexto, la aceptación inicial del lenguaje gestual llevó a que los primeros aprendices se convirtieran en docentes del método desarrollado por L’Epée. Este método se caracterizaba por partir del gesto como punto de partida para la formación de ideas, las cuales se transformaban posteriormente en palabras escritas en francés. Se atribuye a L’Epée la introducción de la noción del lenguaje gestual como una forma natural de comunicación entre las personas sordas, marcando un hito relevante en la evolución de la percepción social y educativa de esta comunidad (Skilar, 1997).\n\n
+En contraposición a la corriente de Lenguaje de Señas, se presenta la Educación Oralista como un modelo educativo que busca enseñar a los sordos la lengua oral y desarrollar la lectura labial. Este enfoque niega la lengua de señas y se esfuerza por convertir a los sordos en hablantes de la lengua oral, considerándola como la única aceptable. Esta metodología se centra en dos aspectos clave: el entrenamiento en la lectura labial y la articulación de la lengua oral. Los sordos son sometidos a entrenamientos constantes, convirtiendo la escuela en una institución más de rehabilitación que de educación.\n\n
+Ante las limitaciones de la Lengua Oral, surge la educación bilingüe, reconociendo la lengua de señas como la lengua natural de los sordos. Este enfoque implica la integración de dos modelos culturales y se define como una educación bicultural (Peluso, 2010). Asimismo, fomenta un sentido positivo de identidad al reforzar la pertenencia a una cultura propia, con su lengua y formas distintivas de relacionarse.</string>
+    <string name="history_titulo3">Historia en Colombia</string>
+    <string name="history_subtitulo3">El INSOR</string>
+    <string name="history_parrafo3">En Colombia, se funda en 1955 el Instituto Nacional para Sordos (INSOR) con el propósito de proteger los derechos de la población con discapacidad auditiva. Inicialmente enfocado en la rehabilitación, especialmente en el ámbito de la salud, con el tiempo, evolucionó para abordar de manera integral los aspectos educativos de la comunidad sorda en el país. A medida que progresó en diversas esferas sociales, el Instituto diversificó sus enfoques metodológicos, incorporando la pedagogía en su institucionalidad y reconociendo simultáneamente el derecho lingüístico inherente a cada individuo con discapacidad auditiva.</string>
+    <string name="insignia_lecci_n_perfecta">Insignia lección perfecta</string>
+    <string name="nombre">Nombre</string>
+    <string name="nivel3">Nivel 3: Región Amazónica</string>
+    <string name="cono_de_racha">Ícono de Racha</string>
+    <string name="cono_de_puntos">Ícono de Puntos</string>
+    <string name="nivel_1_regi_n_andina">Nivel 1: Región Andina</string>
+    <string name="rachainc">Ícono de Racha</string>
+    <string name="_1">1</string>
+    <string name="rch">Ícono de Puntos</string>
+    <string name="_500dp">500dp</string>
+    <string name="nivel_2_regi_n_caribe">Nivel 2: Región Caribe</string>
+    <string name="nivel_3_regi_n_amaz_nica">Nivel 3: Región Amazónica</string>
+</resources>

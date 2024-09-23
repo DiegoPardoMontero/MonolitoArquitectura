@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_1"
+        android:enabled="true"
+        android:icon="@drawable/ic_sign_hand"
+        android:title="Inicio"/>
+    <item
+        android:id="@+id/item_2"
+        android:enabled="true"
+        android:icon="@drawable/ic_dictionary"
+        android:title="@string/diccionario"/>
+    <item
+        android:id="@+id/item_3"
+        android:enabled="true"
+        android:icon="@drawable/ic_information"
+        android:title="Información"/>
+
+    <item
+        android:id="@+id/item_4"
+        android:enabled="true"
+        android:icon="@drawable/ic_user_profile"
+        android:title="Perfil"/>
+</menu>
+

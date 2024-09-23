@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ProyectoEnsenarte" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/coralSea</item>
+
+    </style>
+
+    <!-- Estilo personalizado para BottomNavigationView -->
+    <style name="Widget.BottomNavigationView.Custom" parent="Widget.Design.BottomNavigationView">
+        <item name="itemTextAppearanceActive">@style/CustomBottomNavigationText</item>
+        <item name="itemTextAppearanceInactive">@style/CustomBottomNavigationTextInactive</item>
+    </style>
+
+    <!-- Estilo para texto de ítems activos -->
+    <style name="CustomBottomNavigationText" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@raw/regularbold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="CustomBottomNavigationTextInactive" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@raw/regular</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+    <style name="Theme.ProyectoEnsenarte" parent="Base.Theme.ProyectoEnsenarte" />
+</resources>

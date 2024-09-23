@@ -1,0 +1,165 @@
+<!-- fragment_home.xml -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/information_background">
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Información Relevante"
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="55dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@raw/regularbold"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Botón Historia -->
+    <FrameLayout
+        android:id="@+id/history_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintTop_toBottomOf="@id/title_text"
+        app:layout_constraintBottom_toTopOf="@id/grammar_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/community_button"
+        android:background="@drawable/rounded_button_background"
+        android:clipToOutline="true"
+        >
+
+        <ImageView
+            android:id="@+id/history_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/information_history"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:id="@+id/history_text"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:textColor="@android:color/white"
+            android:background="#80000000"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            android:text="Historia"
+            android:fontFamily="@raw/regular"
+            />
+    </FrameLayout>
+
+    <!-- Botón Comunidad Sorda -->
+    <FrameLayout
+        android:id="@+id/community_button"
+        android:layout_width="0dp"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintTop_toBottomOf="@id/title_text"
+        app:layout_constraintBottom_toTopOf="@id/links_button"
+        app:layout_constraintStart_toEndOf="@id/history_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/rounded_button_background"
+        android:clipToOutline="true">
+
+        <ImageView
+            android:id="@+id/community_image"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/information_deafcomunity"/>
+
+        <TextView
+            android:id="@+id/community_text"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:textColor="@android:color/white"
+            android:background="#80000000"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            android:padding="8dp"
+            android:text="Comunidad sorda"
+            android:fontFamily="@raw/regular"
+            />
+    </FrameLayout>
+
+    <!-- Botón Características Gramaticales -->
+    <FrameLayout
+        android:id="@+id/grammar_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/links_button"
+        android:background="@drawable/rounded_button_background"
+        android:clipToOutline="true">
+
+        <ImageView
+            android:id="@+id/grammar_image"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:src="@drawable/information_grammar"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:id="@+id/grammar_text"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:textColor="@android:color/white"
+            android:background="#80000000"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            android:fontFamily="@raw/regular"
+            android:text="Características gramaticales"
+            />
+    </FrameLayout>
+
+    <!-- Botón Links Importantes -->
+    <FrameLayout
+        android:id="@+id/links_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/grammar_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/rounded_button_background"
+        android:clipToOutline="true">
+
+        <ImageView
+            android:id="@+id/links_image"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/information_links"/>
+
+        <TextView
+            android:id="@+id/links_text"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:textColor="@android:color/white"
+            android:background="#80000000"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:fontFamily="@raw/regular"
+            android:layout_gravity="bottom"
+            android:text="Links Importantes"
+            android:padding="8dp"
+            />
+    </FrameLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

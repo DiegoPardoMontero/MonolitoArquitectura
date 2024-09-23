@@ -1,0 +1,36 @@
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="50dp"
+    android:height="50dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Círculo exterior blanco -->
+    <path
+        android:pathData="M12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0Z"
+        android:fillColor="#FFFFFF" />
+
+    <!-- Círculo interior naranja más grande y centrado -->
+    <path
+        android:pathData="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2Z"
+        android:fillColor="#F69B55" />
+
+    <!-- Ícono de lápiz reducido -->
+    <path
+        android:pathData="M15.5,9.5a0.5,0.5 0,0 0,-2.5 -2.5L8,14.5a1,1 0,0 0,-0.25 0.42l-0.66,2.18a0.25,0.25 0,0 0,0.31 0.31l2.18,-0.66a1,1 0,0 0,0.42 -0.25z"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1"
+        android:fillColor="#00000000"
+        android:strokeColor="#ffffff"
+        android:strokeLineCap="round"/>
+
+    <!-- Línea del borrador ajustada -->
+    <path
+        android:pathData="m12.5,8.5 l1.5,1.5"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1"
+        android:fillColor="#00000000"
+        android:strokeColor="#ffffff"
+        android:strokeLineCap="round"/>
+
+</vector>
