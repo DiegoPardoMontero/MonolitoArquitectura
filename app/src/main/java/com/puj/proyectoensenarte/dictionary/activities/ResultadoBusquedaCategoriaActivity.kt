@@ -3,8 +3,10 @@ package com.puj.proyectoensenarte.dictionary.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.puj.proyectoensenarte.databinding.ActivityResultadoBusquedaCategoriaBinding
 import com.puj.proyectoensenarte.dictionary.adapters.CategoryAdapter
@@ -14,6 +16,7 @@ class ResultadoBusquedaCategoriaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResultadoBusquedaCategoriaBinding
     private lateinit var categoryAdapter: CategoryAdapter
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +36,7 @@ class ResultadoBusquedaCategoriaActivity : AppCompatActivity() {
 
     private fun setupSearchBar() {
         binding.ivSearch.setOnClickListener {
-            performSearch(binding.etSearch.text.toString())
+            performSearch2()
         }
     }
 
@@ -60,6 +63,34 @@ class ResultadoBusquedaCategoriaActivity : AppCompatActivity() {
             val category = Category("url_imagen_por_defecto", capitalizedQuery)
             categoryAdapter.submitList(listOf(category))
         }
+    }
+
+    private fun performSearch2() {
+        var searchQuery = binding.etSearch.text.toString().trim()
+        searchQuery = searchQuery.lowercase()
+        if (searchQuery.isEmpty()) {
+            Toast.makeText(this, "Por favor, ingrese un término de búsqueda", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        db.collection("dict").document(searchQuery).get()
+            .addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot.exists()) {
+                    performSearch(searchQuery)
+                }
+                else{
+                    navigateToError404()
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("DictionaryActivity", "Error buscando categoría: ", e)
+                navigateToError404()
+            }
+    }
+
+    private fun navigateToError404() {
+        val intent = Intent(this, Error404Activity::class.java)
+        startActivity(intent)
     }
 
     private fun capitalizeFirstLetter(input: String): String {
