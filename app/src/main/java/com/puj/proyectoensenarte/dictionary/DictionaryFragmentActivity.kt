@@ -1,6 +1,5 @@
 package com.puj.proyectoensenarte.dictionary
 
-import AlphabetAdapter
 import Error404
 import android.content.Context
 import android.content.Intent
@@ -15,7 +14,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
 import com.puj.proyectoensenarte.R
 import com.puj.proyectoensenarte.databinding.ActivityDictionaryFragmentBinding
 
@@ -23,7 +21,6 @@ class DictionaryFragmentActivity : Fragment() {
 
     private var binding: ActivityDictionaryFragmentBinding? = null
     private lateinit var categoryAdapter: CategoryAdapter
-    private lateinit var alphabetAdapter: AlphabetAdapter
     private val db = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
@@ -39,7 +36,6 @@ class DictionaryFragmentActivity : Fragment() {
 
         setupSearchBar()
         setupCategoriesRecyclerView()
-        setupAlphabetRecyclerView()
         loadCategories()
     }
 
@@ -55,36 +51,6 @@ class DictionaryFragmentActivity : Fragment() {
 
         binding?.ivSearch?.setOnClickListener {
             performSearch()
-        }
-    }
-
-    private fun setupAlphabetRecyclerView() {
-        val letters = ('A'..'Z').map { it.toString() }
-        alphabetAdapter = AlphabetAdapter(letters) { letter ->
-            navigateToDetallePorLetra(letter)
-        }
-        binding?.rvAlphabet?.apply {
-            adapter = alphabetAdapter
-            layoutManager = GridLayoutManager(context, 3)
-        }
-    }
-
-    private fun navigateToDetallePorLetra(letter: String) {
-        val storage = FirebaseStorage.getInstance()
-        val imageRef = storage.reference.child("temp/$letter.png")
-
-        imageRef.downloadUrl.addOnSuccessListener { uri ->
-            val intent = Intent(requireContext(), DetallePorLetraActivity::class.java).apply {
-                putExtra("LETRA", letter)
-                putExtra("SIGN_IMAGE_URL", uri.toString())
-            }
-            startActivity(intent)
-        }.addOnFailureListener { exception ->
-            Log.e("DictionaryFragment", "Error al obtener la URL de la imagen: ${exception.message}")
-            val intent = Intent(requireContext(), DetallePorLetraActivity::class.java).apply {
-                putExtra("LETRA", letter)
-            }
-            startActivity(intent)
         }
     }
 
@@ -133,10 +99,6 @@ class DictionaryFragmentActivity : Fragment() {
                 if (documentSnapshot.exists()) {
                     // Es una categoría
                     navigateToResultadoBusquedaCategoria(searchQuery)
-                } else {
-                    //Es una palabra
-                    searchQuery = capitalizeFirstLetter(searchQuery)
-                    searchInPalabras(searchQuery)
                 }
             }
             .addOnFailureListener { e ->
@@ -145,38 +107,9 @@ class DictionaryFragmentActivity : Fragment() {
             }
     }
 
-    private fun searchInPalabras(searchQuery: String) {
-        db.collection("dictionary").document("palabras").get()
-            .addOnSuccessListener { document ->
-                if (document != null && document.exists()) {
-                    val palabras = document.data
-                    if (palabras?.containsValue(searchQuery) == true) {
-                        // La palabra existe
-                        navigateToResultadoBusquedaPalabra(searchQuery)
-                    } else {
-                        navigateToError404()
-                    }
-                } else {
-                    // El documento "palabras" no existe
-                    navigateToError404()
-                }
-            }
-            .addOnFailureListener { e ->
-                navigateToError404()
-            }
-    }
-
     private fun navigateToResultadoBusquedaCategoria(categoria: String) {
         var categoria = capitalizeFirstLetter(categoria)
         val fragment = ResultadoBusquedaCategoriaFragment.newInstance(categoria)
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.container, fragment)
-            .addToBackStack(null)
-            .commit()
-    }
-
-    private fun navigateToResultadoBusquedaPalabra(palabra: String) {
-        val fragment = ResultadoBusquedaPalabraFragment.newInstance(palabra)
         parentFragmentManager.beginTransaction()
             .replace(R.id.container, fragment)
             .addToBackStack(null)
