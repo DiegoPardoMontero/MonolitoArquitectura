@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.puj.proyectoensenarte.databinding.ActivityDictionaryBinding
+import com.puj.proyectoensenarte.dictionary.adapters.CategoryAdapter
 
 class DictionaryActivity : AppCompatActivity() {
 

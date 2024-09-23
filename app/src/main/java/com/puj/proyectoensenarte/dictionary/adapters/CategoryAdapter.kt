@@ -1,4 +1,4 @@
-package com.puj.proyectoensenarte.dictionary
+package com.puj.proyectoensenarte.dictionary.adapters
 
 import android.view.LayoutInflater
 import android.view.View

@@ -1,3 +1,5 @@
+package com.puj.proyectoensenarte.dictionary.adapters
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +11,9 @@ import com.puj.proyectoensenarte.R
 import com.puj.proyectoensenarte.dictionary.data.Palabra
 
 
-class PalabraAdapter(private val onPalabraClick: (String) -> Unit) : ListAdapter<Palabra, PalabraAdapter.PalabraViewHolder>(PalabraDiffCallback()) {
+class PalabraAdapter(private val onPalabraClick: (String) -> Unit) : ListAdapter<Palabra, PalabraAdapter.PalabraViewHolder>(
+    PalabraDiffCallback()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PalabraViewHolder {
         val view = LayoutInflater.from(parent.context)
