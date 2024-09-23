@@ -23,7 +23,7 @@ class CustomVideoView @JvmOverloads constructor(
     private val controllerContainer: FrameLayout
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.custom_video_view, this, true)
+        LayoutInflater.from(context).inflate(R.layout.  custom_video_view, this, true)
 
         videoView = findViewById(R.id.videoView)
         controllerContainer = findViewById(R.id.controllerContainer)
