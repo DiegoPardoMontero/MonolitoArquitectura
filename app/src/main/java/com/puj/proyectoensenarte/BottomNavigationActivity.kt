@@ -5,10 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.puj.proyectoensenarte.databinding.ActivityBottomNavigationBinding
 import com.puj.proyectoensenarte.dictionary.DictionaryFragmentActivity
-import com.puj.proyectoensenarte.information.InformationFragmentActivity
-import com.puj.proyectoensenarte.learning.LearningFragmentActivity
-import com.puj.proyectoensenarte.learning.ScrollableMapActivity
-import com.puj.proyectoensenarte.profile.ProfileFragmentActivity
 
 class BottomNavigationActivity : AppCompatActivity() {
 
@@ -22,7 +18,7 @@ class BottomNavigationActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.item_1 -> {
-                    loadFragment(ScrollableMapActivity())
+                    loadFragment(DictionaryFragmentActivity())
                     true
                 }
                 R.id.item_2 -> {
@@ -30,11 +26,11 @@ class BottomNavigationActivity : AppCompatActivity() {
                     true
                 }
                 R.id.item_3 -> {
-                    loadFragment(InformationFragmentActivity())
+                    loadFragment(DictionaryFragmentActivity())
                     true
                 }
                 R.id.item_4 -> {
-                    loadFragment(ProfileFragmentActivity())
+                    loadFragment(DictionaryFragmentActivity())
                     true
                 }
                 else -> false
