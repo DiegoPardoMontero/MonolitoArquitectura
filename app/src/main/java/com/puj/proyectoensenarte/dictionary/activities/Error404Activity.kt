@@ -1,4 +1,4 @@
-package com.puj.proyectoensenarte.dictionary
+package com.puj.proyectoensenarte.dictionary.activities
 
 import android.content.Context
 import android.os.Bundle

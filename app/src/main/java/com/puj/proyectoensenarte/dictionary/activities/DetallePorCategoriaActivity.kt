@@ -1,4 +1,4 @@
-package com.puj.proyectoensenarte.dictionary
+package com.puj.proyectoensenarte.dictionary.activities
 
 import com.puj.proyectoensenarte.dictionary.adapters.PalabraAdapter
 import android.content.Intent

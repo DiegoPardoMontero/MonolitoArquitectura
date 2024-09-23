@@ -1,9 +1,8 @@
-package com.puj.proyectoensenarte.dictionary
+package com.puj.proyectoensenarte.dictionary.activities
 
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.MediaController

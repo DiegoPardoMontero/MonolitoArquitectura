@@ -14,20 +14,20 @@
         tools:targetApi="31">
 
         <!--- Dictionary Activities -->
-        <activity android:name=".dictionary.DictionaryActivity"
+        <activity android:name=".dictionary.activities.DictionaryActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".dictionary.Error404Activity"
+        <activity android:name=".dictionary.activities.Error404Activity"
             android:exported="true"/>
-        <activity android:name=".dictionary.ResultadoBusquedaCategoriaActivity"
+        <activity android:name=".dictionary.activities.ResultadoBusquedaCategoriaActivity"
             android:exported="true"/>
-        <activity android:name=".dictionary.DetallePorCategoriaActivity"
+        <activity android:name=".dictionary.activities.DetallePorCategoriaActivity"
             android:exported="true"/>
-        <activity android:name=".dictionary.DetallePalabraActivity"
+        <activity android:name=".dictionary.activities.DetallePalabraActivity"
             android:exported="true"/>
 
     </application>
