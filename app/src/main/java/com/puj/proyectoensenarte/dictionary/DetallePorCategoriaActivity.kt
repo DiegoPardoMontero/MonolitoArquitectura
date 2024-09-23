@@ -82,5 +82,3 @@ class DetallePorCategoriaActivity : AppCompatActivity() {
         return texto.replaceFirstChar { it.lowercase() }
     }
 }
-
-data class Palabra(val id: String, val texto: String)

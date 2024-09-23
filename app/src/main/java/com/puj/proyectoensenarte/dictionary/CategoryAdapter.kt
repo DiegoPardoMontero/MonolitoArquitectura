@@ -81,4 +81,3 @@ class CategoryAdapter(
     }
 }
 
-data class Category(val imageUrl: String, val name: String)
