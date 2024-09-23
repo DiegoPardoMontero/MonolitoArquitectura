@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.storage.FirebaseStorage
 import com.puj.proyectoensenarte.databinding.ActivityResultadoBusquedaCategoriaBinding
+import com.puj.proyectoensenarte.dictionary.data.Category
 
 class ResultadoBusquedaCategoriaActivity : AppCompatActivity() {
 

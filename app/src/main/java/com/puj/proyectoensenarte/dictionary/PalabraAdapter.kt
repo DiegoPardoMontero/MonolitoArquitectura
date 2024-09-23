@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.puj.proyectoensenarte.R
-import com.puj.proyectoensenarte.dictionary.Palabra
+import com.puj.proyectoensenarte.dictionary.data.Palabra
 
 
 class PalabraAdapter(private val onPalabraClick: (String) -> Unit) : ListAdapter<Palabra, PalabraAdapter.PalabraViewHolder>(PalabraDiffCallback()) {

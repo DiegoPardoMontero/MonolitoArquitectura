@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.puj.proyectoensenarte.databinding.ActivityDetallePorCategoriaBinding
+import com.puj.proyectoensenarte.dictionary.data.Palabra
 
 class DetallePorCategoriaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetallePorCategoriaBinding

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import com.puj.proyectoensenarte.R
+import com.puj.proyectoensenarte.dictionary.data.Category
 
 class CategoryAdapter(
     private val onItemClicked: (Category) -> Unit
