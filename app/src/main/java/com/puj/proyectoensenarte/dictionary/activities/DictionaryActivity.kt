@@ -44,14 +44,6 @@ class DictionaryActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToDetallePorCategoria(categoria: String, imageUrl: String) {
-        val intent = Intent(this, DetallePorCategoriaActivity::class.java).apply {
-            putExtra("CATEGORIA", categoria)
-            putExtra("CATEGORIA_IMAGE_URL", imageUrl)
-        }
-        startActivity(intent)
-    }
-
     private fun setupCategoriesRecyclerView() {
         categoryAdapter = CategoryAdapter { category ->
             navigateToDetallePorCategoria(category.name, category.imageUrl)
@@ -83,12 +75,13 @@ class DictionaryActivity : AppCompatActivity() {
 
         hideKeyboard()
 
-        // Primero, buscar en las categorías
         db.collection("dict").document(searchQuery).get()
             .addOnSuccessListener { documentSnapshot ->
                 if (documentSnapshot.exists()) {
-                    // Es una categoría
                     navigateToResultadoBusquedaCategoria(searchQuery)
+                }
+                else{
+                    navigateToError404()
                 }
             }
             .addOnFailureListener { e ->
@@ -97,17 +90,20 @@ class DictionaryActivity : AppCompatActivity() {
             }
     }
 
+    private fun navigateToDetallePorCategoria(categoria: String, imageUrl: String) {
+        val intent = Intent(this, DetallePorCategoriaActivity::class.java).apply {
+            putExtra("CATEGORIA", categoria)
+            putExtra("CATEGORIA_IMAGE_URL", imageUrl)
+        }
+        startActivity(intent)
+    }
+
     private fun navigateToResultadoBusquedaCategoria(categoria: String) {
         var categoria = capitalizeFirstLetter(categoria)
         val intent = Intent(this, ResultadoBusquedaCategoriaActivity::class.java).apply {
             putExtra("CATEGORIA", categoria)
         }
         startActivity(intent)
-    }
-
-    private fun noResultsFound(query: String): Boolean {
-        // Implementar la lógica si no se encuentran resultados
-        return false
     }
 
     private fun navigateToError404() {
