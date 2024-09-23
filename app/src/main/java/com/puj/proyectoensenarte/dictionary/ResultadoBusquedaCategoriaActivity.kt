@@ -23,7 +23,7 @@ class ResultadoBusquedaCategoriaActivity : AppCompatActivity() {
         setupSearchBar()
         setupRecyclerView()
 
-        val searchQuery = intent.getStringExtra("SEARCHQUERY") ?: ""
+        val searchQuery = intent.getStringExtra("CATEGORIA") ?: ""
         performSearch(searchQuery)
     }
 

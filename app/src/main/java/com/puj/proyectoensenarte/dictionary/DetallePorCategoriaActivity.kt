@@ -62,7 +62,7 @@ class DetallePorCategoriaActivity : AppCompatActivity() {
 
     private fun loadPalabras(categoria: String) {
         var categoria = primeraLetraMinuscula(categoria)
-        db.collection("dictionary").document(categoria)
+        db.collection("dict").document(categoria)
             .get()
             .addOnSuccessListener { document ->
                 if (document != null && document.exists()) {
