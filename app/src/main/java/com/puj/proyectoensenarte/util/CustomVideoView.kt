@@ -1,4 +1,4 @@
-package com.puj.proyectoensenarte.dictionary
+package com.puj.proyectoensenarte.util
 
 import android.content.Context
 import android.net.Uri

@@ -62,7 +62,7 @@
                     android:fontFamily="@raw/regularbold"
                     android:layout_marginBottom="8dp"/>
 
-                <com.puj.proyectoensenarte.dictionary.CustomVideoView
+                <com.puj.proyectoensenarte.util.CustomVideoView
                     android:id="@+id/videoContainerSena"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
@@ -88,7 +88,7 @@
                     android:textColor="@android:color/black"
                     android:layout_marginBottom="16dp"/>
 
-                <com.puj.proyectoensenarte.dictionary.CustomVideoView
+                <com.puj.proyectoensenarte.util.CustomVideoView
                     android:id="@+id/videoContainerDefinicion"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
@@ -114,7 +114,7 @@
                     android:textColor="@android:color/black"
                     android:layout_marginBottom="16dp"/>
 
-                <com.puj.proyectoensenarte.dictionary.CustomVideoView
+                <com.puj.proyectoensenarte.util.CustomVideoView
                     android:id="@+id/videoContainerEjemplo"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
