@@ -16,6 +16,10 @@ class Error404Activity : AppCompatActivity() {
         binding = ActivityError404Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.backButton.setOnClickListener {
+            finish()
+        }
+
         setupSearchBar()
     }
 

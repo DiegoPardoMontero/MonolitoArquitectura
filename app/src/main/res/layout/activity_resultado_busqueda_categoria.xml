@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     android:background="@color/coralSea">
 
+    <ImageView
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/back_button_desc" />
+
     <TextView
         android:id="@+id/tvDiccionario"
         android:layout_width="wrap_content"

@@ -20,6 +20,10 @@ class ResultadoBusquedaCategoriaActivity : AppCompatActivity() {
         binding = ActivityResultadoBusquedaCategoriaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.backButton.setOnClickListener {
+            finish()
+        }
+
         setupSearchBar()
         setupRecyclerView()
 
