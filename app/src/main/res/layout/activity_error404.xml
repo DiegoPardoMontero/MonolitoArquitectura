@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:fontFamily="@raw/regularbold"
-        android:text="Diccionario"
+        android:text="Diccionario LSC"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
