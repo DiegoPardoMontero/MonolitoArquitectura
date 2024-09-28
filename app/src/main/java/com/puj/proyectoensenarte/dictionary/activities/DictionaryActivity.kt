@@ -12,18 +12,20 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.puj.proyectoensenarte.databinding.ActivityDictionaryBinding
 import com.puj.proyectoensenarte.dictionary.adapters.CategoryAdapter
+import com.puj.proyectoensenarte.dictionary.data.DatabaseHelper
 
 class DictionaryActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityDictionaryBinding
     private lateinit var categoryAdapter: CategoryAdapter
     private val db = FirebaseFirestore.getInstance()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDictionaryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val dbHelper = DatabaseHelper(this)     
         setupSearchBar()
         setupCategoriesRecyclerView()
         loadCategories()
