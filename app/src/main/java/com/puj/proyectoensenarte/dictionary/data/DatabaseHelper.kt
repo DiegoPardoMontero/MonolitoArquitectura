@@ -4,12 +4,9 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
-import com.puj.proyectoensenarte.R
 
-// Database Helper class to manage database creation and version management
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
-    // Called when the database is created for the first time
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(CREATE_TABLE_CATEGORIA)
         db?.execSQL(CREATE_TABLE_PALABRA)
@@ -35,11 +32,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_PALABRA")
         onCreate(db)
     }
-
-    // Función para insertar las categorías iniciales en la base de datos
-
-
-
 
     companion object {
         private const val DATABASE_VERSION = 1

@@ -15,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.puj.proyectoensenarte.databinding.ActivityDictionaryBinding
 import com.puj.proyectoensenarte.dictionary.adapters.CategoryAdapter
 import com.puj.proyectoensenarte.dictionary.data.DatabaseHelper
+import com.puj.proyectoensenarte.dictionary.data.DatabaseHelper.Companion.TABLE_PALABRA
 
 class DictionaryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDictionaryBinding
@@ -31,8 +32,8 @@ class DictionaryActivity : AppCompatActivity() {
         setupSearchBar()
         setupCategoriesRecyclerView()
         insertarCategoriasIniciales(dbHelper.writableDatabase)
+        insertarPalabrasIniciales(dbHelper.writableDatabase, this)
         loadCategories()
-        //cargarDatosPrueba()
         mostrarCategorias(dbHelper.readableDatabase)
         mostrarPalabras(dbHelper.readableDatabase)
     }
@@ -117,29 +118,6 @@ class DictionaryActivity : AppCompatActivity() {
         imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
     }
 
-    private fun cargarDatosPrueba(){
-        val dbSQLite = dbHelper.writableDatabase
-        val categoriaValues = ContentValues().apply {
-            put("nombre", "Animales")
-            put("imagen", "ruta/a/imagen_animales.png")
-        }
-        val newRowIdCategoria = dbSQLite?.insert(DatabaseHelper.TABLE_CATEGORIA, null, categoriaValues)
-
-        // Insertar una palabra relacionada con la categoría
-        val palabraValues = ContentValues().apply {
-            put("nombre", "Perro")
-            put("video1", "ruta/a/video1.mp4")
-            put("video2", "ruta/a/video2.mp4")
-            put("video3", "ruta/a/video3.mp4")
-            put("definicion", "Un animal doméstico")
-            put("ejemplo", "El perro es un animal fiel")
-            put("categoria_id", newRowIdCategoria)  // Aquí se asocia la palabra a la categoría
-        }
-        val newRowIdPalabra = dbSQLite?.insert(DatabaseHelper.TABLE_PALABRA, null, palabraValues)
-
-        // Cerrar la base de datos cuando termines
-        dbSQLite?.close()
-    }
 
     private fun insertarCategoriasIniciales(db: SQLiteDatabase?) {
         val categorias = listOf(
@@ -160,6 +138,36 @@ class DictionaryActivity : AppCompatActivity() {
             db?.execSQL(insertCategoriaQuery)
         }
     }
+
+    private fun insertarPalabrasIniciales(db: SQLiteDatabase?, context: Context) {
+        // Definir las palabras y categorías (nombrePalabra, categoria_id)
+        val palabras = listOf(
+            arrayOf("aguacate", "2"),  // "inteligencia" está en la categoría con ID 1
+            arrayOf("ayer", "5"),  // "alimentacion" está en la categoría con ID 1
+            arrayOf("cantidad", "2")       // "cantidad" está en la categoría con ID 2
+        )
+
+        // Insertar cada palabra
+        for (palabra in palabras) {
+            val nombrePalabra = palabra[0]
+            val categoriaId = palabra[1]
+
+            // Generar los URIs de los videos basados en el nombre de la palabra
+            val videoPalabra = "android.resource://${context.packageName}/raw/${nombrePalabra}_palabra"
+            val videoDefinicion = "android.resource://${context.packageName}/raw/${nombrePalabra}_definicion"
+            val videoEjemplo = "android.resource://${context.packageName}/raw/${nombrePalabra}_ejemplo"
+
+            // Insertar la palabra en la base de datos con las URIs de los videos
+            val insertPalabraQuery = """
+            INSERT INTO $TABLE_PALABRA (nombre, video1, video2, video3, definicion, ejemplo, categoria_id)
+            VALUES ('$nombrePalabra', '$videoPalabra', '$videoDefinicion', '$videoEjemplo', 
+                    'Definición de $nombrePalabra', 'Ejemplo de $nombrePalabra', $categoriaId)
+        """.trimIndent()
+            db?.execSQL(insertPalabraQuery)
+        }
+    }
+
+
 
     fun mostrarCategorias(db: SQLiteDatabase) {
         val cursor = db.rawQuery("SELECT id, nombre, imagen FROM categoria", null)
@@ -201,7 +209,6 @@ class DictionaryActivity : AppCompatActivity() {
 
         cursor.close()  // Cierra el cursor para liberar recursos
     }
-
 
 
     private fun capitalizeFirstLetter(input: String): String {

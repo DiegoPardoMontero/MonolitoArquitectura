@@ -31,7 +31,6 @@ class CategoryAdapter(
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val category = getItem(position)
 
-        // Usar el nombre de la imagen para cargar el recurso desde drawable
         val context = holder.itemView.context
         val resourceId = context.resources.getIdentifier(category.imageUrl, "drawable", context.packageName)
 
@@ -43,7 +42,6 @@ class CategoryAdapter(
         }
     }
 
-    // Nueva función para cargar las categorías desde la base de datos SQLite
     fun loadCategoriesFromDatabase(context: Context, db: SQLiteDatabase) {
         val cursor: Cursor = db.rawQuery("SELECT nombre, imagen FROM categoria", null)
         val categories = mutableListOf<Category>()
@@ -57,7 +55,6 @@ class CategoryAdapter(
         }
         cursor.close()
 
-        // Enviar la lista de categorías al adaptador
         submitList(categories)
     }
 
