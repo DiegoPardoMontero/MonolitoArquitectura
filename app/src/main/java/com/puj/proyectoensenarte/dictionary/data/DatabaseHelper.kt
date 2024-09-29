@@ -3,6 +3,7 @@ package com.puj.proyectoensenarte.dictionary.data
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.puj.proyectoensenarte.R
 
 // Database Helper class to manage database creation and version management
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -19,6 +20,9 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_PALABRA")
         onCreate(db)
     }
+
+    // Función para insertar las categorías iniciales en la base de datos
+
 
 
 

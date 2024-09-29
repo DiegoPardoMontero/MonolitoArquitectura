@@ -32,9 +32,10 @@ class DictionaryActivity : AppCompatActivity() {
         setupSearchBar()
         setupCategoriesRecyclerView()
         loadCategories()
-        cargarDatosPrueba()
+        //cargarDatosPrueba()
+        insertarCategoriasIniciales(dbHelper.writableDatabase)
         mostrarCategorias(dbHelper.readableDatabase)
-        mostrarPalabras(dbHelper.writableDatabase)
+        mostrarPalabras(dbHelper.readableDatabase)
     }
 
     private fun setupSearchBar() {
@@ -148,6 +149,26 @@ class DictionaryActivity : AppCompatActivity() {
         dbSQLite?.close()
     }
 
+    private fun insertarCategoriasIniciales(db: SQLiteDatabase?) {
+        val categorias = listOf(
+            arrayOf("Inteligencia", "inteligencia"),
+            arrayOf("Alimentacion", "alimentacion"),
+            arrayOf("Cantidad", "cantidad"),
+            arrayOf("Fisiologia", "fisiologia"),
+            arrayOf("Espacio", "espacio"),
+            arrayOf("Tiempo", "tiempo"),
+            arrayOf("Salud", "salud")
+        )
+
+        for (categoria in categorias) {
+            val insertCategoriaQuery = """
+            INSERT OR IGNORE INTO ${DatabaseHelper.TABLE_CATEGORIA} (nombre, imagen)
+            VALUES ('${categoria[0]}', '${categoria[1]}')
+        """.trimIndent()
+            db?.execSQL(insertCategoriaQuery)
+        }
+    }
+
     fun mostrarCategorias(db: SQLiteDatabase) {
         val cursor = db.rawQuery("SELECT id, nombre, imagen FROM categoria", null)
 
@@ -188,6 +209,7 @@ class DictionaryActivity : AppCompatActivity() {
 
         cursor.close()  // Cierra el cursor para liberar recursos
     }
+
 
 
     private fun capitalizeFirstLetter(input: String): String {
