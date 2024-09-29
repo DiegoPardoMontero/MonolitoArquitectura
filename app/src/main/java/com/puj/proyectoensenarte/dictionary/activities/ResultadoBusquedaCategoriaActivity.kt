@@ -2,21 +2,16 @@ package com.puj.proyectoensenarte.dictionary.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
 import com.puj.proyectoensenarte.databinding.ActivityResultadoBusquedaCategoriaBinding
 import com.puj.proyectoensenarte.dictionary.adapters.CategoryAdapter
-import com.puj.proyectoensenarte.dictionary.data.Category
 
 class ResultadoBusquedaCategoriaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResultadoBusquedaCategoriaBinding
     private lateinit var categoryAdapter: CategoryAdapter
-    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +26,6 @@ class ResultadoBusquedaCategoriaActivity : AppCompatActivity() {
         setupRecyclerView()
 
         val searchQuery = intent.getStringExtra("CATEGORIA") ?: ""
-        performSearch(searchQuery)
     }
 
     private fun setupSearchBar() {
@@ -48,22 +42,7 @@ class ResultadoBusquedaCategoriaActivity : AppCompatActivity() {
         binding.rvSearchResults.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun performSearch(query: String) {
-        val capitalizedQuery = capitalizeFirstLetter(query)
-        val storage = FirebaseStorage.getInstance()
-        val imageRef = storage.reference.child("imagenesCategorias/$capitalizedQuery.png")
 
-        imageRef.downloadUrl.addOnSuccessListener { uri ->
-            val downloadUrl = uri.toString()
-            val formattedQuery = capitalizedQuery.replace(Regex("(?<=.)([A-Z])"), " $1")
-            val category = Category(downloadUrl, formattedQuery)
-            categoryAdapter.submitList(listOf(category))
-        }.addOnFailureListener { exception ->
-            Log.e("ResultadoBusqueda", "Error al cargar la imagen de la categoría: ${exception.message}")
-            val category = Category("url_imagen_por_defecto", capitalizedQuery)
-            categoryAdapter.submitList(listOf(category))
-        }
-    }
 
     private fun performSearch2() {
         var searchQuery = binding.etSearch.text.toString().trim()
@@ -72,20 +51,6 @@ class ResultadoBusquedaCategoriaActivity : AppCompatActivity() {
             Toast.makeText(this, "Por favor, ingrese un término de búsqueda", Toast.LENGTH_SHORT).show()
             return
         }
-
-        db.collection("dict").document(searchQuery).get()
-            .addOnSuccessListener { documentSnapshot ->
-                if (documentSnapshot.exists()) {
-                    performSearch(searchQuery)
-                }
-                else{
-                    navigateToError404()
-                }
-            }
-            .addOnFailureListener { e ->
-                Log.e("DictionaryActivity", "Error buscando categoría: ", e)
-                navigateToError404()
-            }
     }
 
     private fun navigateToError404() {
@@ -101,10 +66,10 @@ class ResultadoBusquedaCategoriaActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToDetallePorCategoria(categoria: String, imageUrl: String) {
+    private fun navigateToDetallePorCategoria(categoria: String, imageUri: String) {
         val intent = Intent(this, DetallePorCategoriaActivity::class.java).apply {
             putExtra("CATEGORIA", categoria)
-            putExtra("CATEGORIA_IMAGE_URL", imageUrl)
+            putExtra("CATEGORIA_IMAGE_URI", imageUri)
         }
         startActivity(intent)
     }

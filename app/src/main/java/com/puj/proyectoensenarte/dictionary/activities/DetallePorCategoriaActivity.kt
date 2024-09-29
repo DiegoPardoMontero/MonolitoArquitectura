@@ -6,14 +6,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.google.firebase.firestore.FirebaseFirestore
 import com.puj.proyectoensenarte.databinding.ActivityDetallePorCategoriaBinding
-import com.puj.proyectoensenarte.dictionary.data.Palabra
 
 class DetallePorCategoriaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetallePorCategoriaBinding
     private lateinit var palabraAdapter: PalabraAdapter
-    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +22,6 @@ class DetallePorCategoriaActivity : AppCompatActivity() {
 
         setupUI(categoria, categoriaImageUrl)
         setupRecyclerView()
-        loadPalabras(categoria)
     }
 
     private fun setupUI(categoria: String, categoriaImageUrl: String?) {
@@ -59,26 +55,6 @@ class DetallePorCategoriaActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-
-    private fun loadPalabras(categoria: String) {
-        var categoria = primeraLetraMinuscula(categoria)
-        db.collection("dict").document(categoria)
-            .get()
-            .addOnSuccessListener { document ->
-                if (document != null && document.exists()) {
-                    val palabras = document.data?.map { (key, value) ->
-                        Palabra(key, value.toString())
-                    }?.sortedBy { it.texto } ?: emptyList()  // Ordenar alfabéticamente aquí
-
-                    palabraAdapter.submitList(palabras)
-                } else {
-                    // Manejar el caso en que no se encuentren palabras
-                }
-            }
-            .addOnFailureListener { exception ->
-                // Manejar el error
-            }
-    }
 
     fun primeraLetraMinuscula(texto: String): String {
         return texto.replaceFirstChar { it.lowercase() }

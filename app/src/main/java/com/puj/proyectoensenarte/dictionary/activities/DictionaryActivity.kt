@@ -3,7 +3,6 @@ package com.puj.proyectoensenarte.dictionary.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import android.view.inputmethod.EditorInfo
@@ -11,7 +10,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.firebase.firestore.FirebaseFirestore
 import com.puj.proyectoensenarte.databinding.ActivityDictionaryBinding
 import com.puj.proyectoensenarte.dictionary.adapters.CategoryAdapter
 import com.puj.proyectoensenarte.dictionary.data.DatabaseHelper
@@ -21,7 +19,6 @@ class DictionaryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDictionaryBinding
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var dbHelper : DatabaseHelper
-    private val db = FirebaseFirestore.getInstance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,20 +73,6 @@ class DictionaryActivity : AppCompatActivity() {
         }
 
         hideKeyboard()
-
-        db.collection("dict").document(searchQuery).get()
-            .addOnSuccessListener { documentSnapshot ->
-                if (documentSnapshot.exists()) {
-                    navigateToResultadoBusquedaCategoria(searchQuery)
-                }
-                else{
-                    navigateToError404()
-                }
-            }
-            .addOnFailureListener { e ->
-                Log.e("DictionaryActivity", "Error buscando categoría: ", e)
-                navigateToError404()
-            }
     }
 
     private fun navigateToDetallePorCategoria(categoria: String, imageUrl: String) {
@@ -140,24 +123,20 @@ class DictionaryActivity : AppCompatActivity() {
     }
 
     private fun insertarPalabrasIniciales(db: SQLiteDatabase?, context: Context) {
-        // Definir las palabras y categorías (nombrePalabra, categoria_id)
         val palabras = listOf(
-            arrayOf("aguacate", "2"),  // "inteligencia" está en la categoría con ID 1
-            arrayOf("ayer", "5"),  // "alimentacion" está en la categoría con ID 1
-            arrayOf("cantidad", "2")       // "cantidad" está en la categoría con ID 2
+            arrayOf("aguacate", "2"),
+            arrayOf("ayer", "5"),
+            arrayOf("cantidad", "2")
         )
 
-        // Insertar cada palabra
         for (palabra in palabras) {
             val nombrePalabra = palabra[0]
             val categoriaId = palabra[1]
 
-            // Generar los URIs de los videos basados en el nombre de la palabra
             val videoPalabra = "android.resource://${context.packageName}/raw/${nombrePalabra}_palabra"
             val videoDefinicion = "android.resource://${context.packageName}/raw/${nombrePalabra}_definicion"
             val videoEjemplo = "android.resource://${context.packageName}/raw/${nombrePalabra}_ejemplo"
 
-            // Insertar la palabra en la base de datos con las URIs de los videos
             val insertPalabraQuery = """
             INSERT INTO $TABLE_PALABRA (nombre, video1, video2, video3, definicion, ejemplo, categoria_id)
             VALUES ('$nombrePalabra', '$videoPalabra', '$videoDefinicion', '$videoEjemplo', 
@@ -184,7 +163,7 @@ class DictionaryActivity : AppCompatActivity() {
             Log.d("DatabaseContent", "No hay categorías disponibles.")
         }
 
-        cursor.close()  // Cierra el cursor para liberar recursos
+        cursor.close()
     }
 
     fun mostrarPalabras(db: SQLiteDatabase) {
@@ -207,7 +186,7 @@ class DictionaryActivity : AppCompatActivity() {
             Log.d("DatabaseContent", "No hay palabras disponibles.")
         }
 
-        cursor.close()  // Cierra el cursor para liberar recursos
+        cursor.close()
     }
 
 

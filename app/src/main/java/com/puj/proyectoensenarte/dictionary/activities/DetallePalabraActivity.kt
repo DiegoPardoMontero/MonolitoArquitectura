@@ -8,13 +8,11 @@ import android.widget.FrameLayout
 import android.widget.MediaController
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.firestore.FirebaseFirestore
 import com.puj.proyectoensenarte.databinding.ActivityDetallePorPalabraBinding
 
 class DetallePalabraActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetallePorPalabraBinding
-    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,20 +36,6 @@ class DetallePalabraActivity : AppCompatActivity() {
 
     private fun loadPalabraDetails(palabra: String) {
         var palabra = primeraLetraMinuscula(palabra)
-        db.collection("dictionary").document("palabras")
-            .get()
-            .addOnSuccessListener { document ->
-                if (document != null && document.exists()) {
-                    val palabraData = document.get(palabra) as? Map<String, Any>
-                    palabraData?.let {
-                        setupVideos(it)
-                        setupTexts(it)
-                    }
-                }
-            }
-            .addOnFailureListener { exception ->
-                // Manejar el error
-            }
     }
 
     private fun setupVideos(palabraData: Map<String, Any>) {
@@ -64,26 +48,21 @@ class DetallePalabraActivity : AppCompatActivity() {
         if (url != null) {
             Log.d("DetallePalabra", "Configurando video con URL: $url")
 
-            // Limpiar el contenedor
             videoViewContainer.removeAllViews()
 
-            // Crear un nuevo VideoView
             val videoView = VideoView(this)
 
-            // Configurar el VideoView
             val layoutParams = FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
             videoView.layoutParams = layoutParams
 
-            // Añadir el VideoView al FrameLayout
             videoViewContainer.addView(videoView)
 
             val uri = Uri.parse(url)
             videoView.setVideoURI(uri)
 
-            // Crear un MediaController personalizado
             val mediaController = object : MediaController(this) {
                 override fun show(timeout: Int) {
                     super.show(0) // Mantener los controles siempre visibles
@@ -106,11 +85,9 @@ class DetallePalabraActivity : AppCompatActivity() {
                 false
             }
 
-            // Iniciar la carga del video
             videoView.requestFocus()
         } else {
             Log.e("DetallePalabra", "URL del video es nula")
-            // Limpiar el contenedor si no hay URL
             videoViewContainer.removeAllViews()
         }
     }
