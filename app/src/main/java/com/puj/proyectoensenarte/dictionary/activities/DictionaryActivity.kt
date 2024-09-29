@@ -27,13 +27,12 @@ class DictionaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDictionaryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         dbHelper = DatabaseHelper(this)
         setupSearchBar()
         setupCategoriesRecyclerView()
+        insertarCategoriasIniciales(dbHelper.writableDatabase)
         loadCategories()
         //cargarDatosPrueba()
-        insertarCategoriasIniciales(dbHelper.writableDatabase)
         mostrarCategorias(dbHelper.readableDatabase)
         mostrarPalabras(dbHelper.readableDatabase)
     }

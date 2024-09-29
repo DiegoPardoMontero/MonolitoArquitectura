@@ -3,6 +3,7 @@ package com.puj.proyectoensenarte.dictionary.data
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import com.puj.proyectoensenarte.R
 
 // Database Helper class to manage database creation and version management
@@ -12,6 +13,20 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(CREATE_TABLE_CATEGORIA)
         db?.execSQL(CREATE_TABLE_PALABRA)
+    }
+
+    private fun vaciarBaseDeDatos(db: SQLiteDatabase?) {
+        db?.execSQL("DROP TABLE IF EXISTS $TABLE_CATEGORIA")
+        db?.execSQL("DROP TABLE IF EXISTS $TABLE_PALABRA")
+        Log.d("DatabaseHelper", "Base de datos reiniciada: Tablas eliminadas")
+    }
+
+    override fun onOpen(db: SQLiteDatabase?) {
+        super.onOpen(db)
+
+        vaciarBaseDeDatos(db)
+
+        onCreate(db)
     }
 
     // Called when the database needs to be upgraded
