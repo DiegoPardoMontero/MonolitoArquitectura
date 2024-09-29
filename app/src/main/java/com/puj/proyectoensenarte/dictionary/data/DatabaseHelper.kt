@@ -20,6 +20,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         onCreate(db)
     }
 
+
+
     companion object {
         private const val DATABASE_VERSION = 1
         private const val DATABASE_NAME = "miBaseDeDatos.db"
