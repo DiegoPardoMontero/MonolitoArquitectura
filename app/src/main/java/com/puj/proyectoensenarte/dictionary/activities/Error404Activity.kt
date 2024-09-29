@@ -39,13 +39,10 @@ class Error404Activity : AppCompatActivity() {
     }
 
     private fun performSearch() {
-        // Lógica para la búsqueda
         val searchQuery = binding.etSearch.text.toString()
         binding.etSearch.setText("")
         hideKeyboard()
 
-        // Aquí puedes agregar la lógica para manejar la búsqueda
-        // Por ejemplo, puedes iniciar una nueva actividad con los resultados de la búsqueda
     }
 
     private fun hideKeyboard() {

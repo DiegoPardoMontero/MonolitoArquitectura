@@ -32,9 +32,7 @@ class CategoryAdapter(
         val category = getItem(position)
 
         val context = holder.itemView.context
-        val resourceId = context.resources.getIdentifier(category.imageUrl, "drawable", context.packageName)
 
-        holder.icon.setImageResource(resourceId)
         holder.name.text = category.name
 
         holder.itemView.setOnClickListener {
