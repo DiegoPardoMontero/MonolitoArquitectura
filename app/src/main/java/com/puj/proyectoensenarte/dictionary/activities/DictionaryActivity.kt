@@ -64,14 +64,7 @@ class DictionaryActivity : AppCompatActivity() {
     }
 
     private fun loadCategories() {
-        categoryAdapter.loadCategories(
-            onSuccess = {
-                // Categorías cargadas exitosamente
-            },
-            onFailure = { exception ->
-                // Manejar el error
-            }
-        )
+        categoryAdapter.loadCategoriesFromDatabase(this, dbHelper.readableDatabase)
     }
 
     private fun performSearch() {

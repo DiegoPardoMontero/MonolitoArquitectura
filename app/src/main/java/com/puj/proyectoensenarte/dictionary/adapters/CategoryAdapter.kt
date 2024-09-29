@@ -1,5 +1,8 @@
 package com.puj.proyectoensenarte.dictionary.adapters
 
+import android.content.Context
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +11,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.google.firebase.storage.FirebaseStorage
 import com.puj.proyectoensenarte.R
 import com.puj.proyectoensenarte.dictionary.data.Category
 
@@ -30,11 +31,11 @@ class CategoryAdapter(
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val category = getItem(position)
 
-        Glide.with(holder.itemView.context)
-            .load(category.imageUrl)
-            .placeholder(R.drawable.vestuario)
-            .into(holder.icon)
+        // Usar el nombre de la imagen para cargar el recurso desde drawable
+        val context = holder.itemView.context
+        val resourceId = context.resources.getIdentifier(category.imageUrl, "drawable", context.packageName)
 
+        holder.icon.setImageResource(resourceId)
         holder.name.text = category.name
 
         holder.itemView.setOnClickListener {
@@ -42,33 +43,22 @@ class CategoryAdapter(
         }
     }
 
-    fun loadCategories(onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
-        val listRef = FirebaseStorage.getInstance().reference.child("imagenesCategorias")
-        val tempCategories = mutableListOf<Category>()
+    // Nueva función para cargar las categorías desde la base de datos SQLite
+    fun loadCategoriesFromDatabase(context: Context, db: SQLiteDatabase) {
+        val cursor: Cursor = db.rawQuery("SELECT nombre, imagen FROM categoria", null)
+        val categories = mutableListOf<Category>()
 
-        listRef.listAll().addOnSuccessListener { listResult ->
-            val totalItems = listResult.items.size
-            var loadedItems = 0
-
-            listResult.items.forEach { item ->
-                item.downloadUrl.addOnSuccessListener { uri ->
-                    var fileName = item.name.substringBeforeLast(".png")
-                    fileName = fileName.replace(Regex("(?<=.)([A-Z])"), " $1")
-                    val downloadUrl = uri.toString()
-                    tempCategories.add(Category(downloadUrl, fileName))
-
-                    loadedItems++
-                    if (loadedItems == totalItems) {
-                        submitList(tempCategories.sortedBy { it.name })
-                        onSuccess()
-                    }
-                }.addOnFailureListener { e ->
-                    onFailure(e)
-                }
-            }
-        }.addOnFailureListener { e ->
-            onFailure(e)
+        if (cursor.moveToFirst()) {
+            do {
+                val name = cursor.getString(cursor.getColumnIndexOrThrow("nombre"))
+                val image = cursor.getString(cursor.getColumnIndexOrThrow("imagen"))
+                categories.add(Category(image, name))
+            } while (cursor.moveToNext())
         }
+        cursor.close()
+
+        // Enviar la lista de categorías al adaptador
+        submitList(categories)
     }
 
     private class CategoryDiffCallback : DiffUtil.ItemCallback<Category>() {
@@ -81,4 +71,3 @@ class CategoryAdapter(
         }
     }
 }
-
