@@ -32,6 +32,61 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         onCreate(db)
     }
 
+    fun buscarTodasLasPalabras(): List<PalabraData> {
+        val palabras = mutableListOf<PalabraData>()
+        val query = "SELECT id, nombre, definicion FROM palabra"
+
+        val cursor = readableDatabase.rawQuery(query, null)
+
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
+                val nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"))
+                val definicion = cursor.getString(cursor.getColumnIndexOrThrow("definicion"))
+
+                palabras.add(PalabraData(id, nombre, definicion))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return palabras
+    }
+
+    fun buscarTodasLasCategorias(): List<Category> {
+        val categorias = mutableListOf<Category>()
+        val query = "SELECT id, nombre, imagen FROM categoria"
+
+        val cursor = readableDatabase.rawQuery(query, null)
+
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
+                val nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"))
+                val imagen = cursor.getString(cursor.getColumnIndexOrThrow("imagen"))
+
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return categorias
+    }
+
+    fun buscarCategoriaPorNombre(nombre: String): Category? {
+        val query = "SELECT id, nombre, imagen FROM categoria WHERE nombre = ?"
+
+        val cursor = readableDatabase.rawQuery(query, arrayOf(nombre))
+
+        var categoria: Category? = null
+        if (cursor.moveToFirst()) {
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
+            val nombreCategoria = cursor.getString(cursor.getColumnIndexOrThrow("nombre"))
+            val imagen = cursor.getString(cursor.getColumnIndexOrThrow("imagen"))
+        }
+        cursor.close()
+
+        return categoria
+    }
+
 
 
 
